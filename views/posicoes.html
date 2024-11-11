@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerenciar Posições</title>
+  <!-- Bootstrap CSS (importado localmente) -->
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+
+  <div class="container mt-5">
+    <!-- Título da Página -->
+    <h1 class="text-center mb-4">Gerenciar Posições</h1>
+
+    <!-- Formulário de Posicao -->
+    <div class="card shadow p-4 mb-5">
+      <h3 class="card-title text-center">Cadastrar Posicao</h3>
+      <form id="posicaoForm">
+        <input type="hidden" id="posicaoId" />       
+       
+
+        <div class="mb-3">
+          <label for="vc_nome" class="form-label">Nome:</label>
+          <input type="text" id="vc_nome" class="form-control" placeholder="Nome" required />
+        </div>      
+
+        <button type="submit" id="savePosicaoBtn" class="btn btn-primary w-100">Salvar Posicao</button>
+      </form>
+    </div>
+
+    <!-- Lista de Posições -->
+    <div class="card shadow p-4">
+      <h3 class="card-title text-center">Lista de Posições</h3>
+      <table id="posicoesTable" class="table table-striped">
+        <thead>
+          <tr>
+            <th>Nome</th>           
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Linhas de Posições irão aqui -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="../src/posicao.js"></script>
+</body>
+</html>

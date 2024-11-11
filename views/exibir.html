@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concurso de Tripl</title>   
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/3p.css"></link>
+</head>
+
+<body>
+     <header>
+        
+            <h1>CONCURSO DE TRIPL <img style="width: 85px;vertical-align: text-bottom;margin-left: -36px;" src="../assets/imgs/hand1.png" alt="Lebron James"></h1>
+        </header>
+    <div class="container">
+       
+        <main>
+            <div id="" class="player-info">
+                <div id="jogadorFoto" class="player-photo">12
+                    <img id="jogadorFoto" src="../assets/imgs/player6.png"
+                    alt="Lebron James" class="player-image2">
+                </div>               
+                <p id="jogador" class="player-name">Paulo</p>
+            </div>         
+            
+            
+            <div class="scoreboard">
+                <div class="card2">
+                    <h3>BOLAS CONVERTIDAS</h3>
+                    <div  class="score-container">
+                        
+                        <p id="score" class="score">00</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>CRONÓMETRO</h3>
+                    <div  class="score-container">
+                    
+                    <div id="timer" class="time">00:00.0</div>
+                </div>
+                </div>
+                <p id="status" class="status-active">Status: Ativo</p>
+            </div>
+            <!-- <aside class="ranking" id="ranking">
+                <div class="rank-item ">
+                    <div class="player-image-wrapper">
+                    <img class="player-image" src="https://storage.googleapis.com/nbarankings-theringer-com-cms/public/media/ringerbasketballhub/players/NikolaJokic-small.png"
+                        alt="Player"></div>
+                    
+                    <p class="jogador-info2">LUÍS SANGO | <span><span style="font-size: x-large;" class="pontos-wrapper">10</span><sub class="sub-text">pts</sub></span></p>
+                </div>
+                <div class="rank-item ">
+                    <div class="player-image-wrapper">
+                    <img class="player-image" src="https://storage.googleapis.com/nbarankings-theringer-com-cms/public/media/ringerbasketballhub/players/NikolaJokic-small.png"
+                        alt="Player"></div>
+                    
+                    <p class="jogador-info2">LUÍS SANGO<span>|</span> <span><span style="font-size: x-large;" class="pontos-wrapper">10</span><sub class="sub-text">pts</sub></span></p>
+                </div>
+                <div class="rank-item ">
+                    <div class="player-image-wrapper">
+                    <img class="player-image" src="https://storage.googleapis.com/nbarankings-theringer-com-cms/public/media/ringerbasketballhub/players/NikolaJokic-small.png"
+                        alt="Player"></div>
+                    
+                    <p class="jogador-info2">LUÍS SANGO<span>|</span> <span><span style="font-size: x-large;" class="pontos-wrapper">10</span><sub class="sub-text">pts</sub></span></p>
+                </div>
+                <div class="rank-item ">
+                    <div class="player-image-wrapper">
+                    <img class="player-image" src="https://storage.googleapis.com/nbarankings-theringer-com-cms/public/media/ringerbasketballhub/players/NikolaJokic-small.png"
+                        alt="Player"></div>
+                    
+                    <p class="jogador-info2">LUÍS SANGO<span>|</span> <span><span style="font-size: x-large;" class="pontos-wrapper">10</span><sub class="sub-text">pts</sub></span></p>
+                </div>
+               <div class="rank-item ">
+                    <div class="player-image-wrapper">
+                    <img class="player-image" src="https://storage.googleapis.com/nbarankings-theringer-com-cms/public/media/ringerbasketballhub/players/NikolaJokic-small.png"
+                        alt="Player"></div>
+                    
+                    <p class="jogador-info2">LUÍS SANGO <span>|</span> <span><span style="font-size: x-large;" class="pontos-wrapper">10</span><sub class="sub-text">pts</sub></span></p>
+                </div>
+                <div class="rank-item ">
+                    <div class="player-image-wrapper">
+                    <img class="player-image" src="https://storage.googleapis.com/nbarankings-theringer-com-cms/public/media/ringerbasketballhub/players/NikolaJokic-small.png"
+                        alt="Player"></div>
+                    
+                    <p class="jogador-info2">LUÍS SANGO | <span><span style="font-size: x-large;" class="pontos-wrapper">10</span><sub class="sub-text">pts</sub></span></p>
+                </div>
+
+            </aside> -->
+
+            <aside class="ranking" id="ranking"></aside>                         
+
+                 </main>        
+               <br>
+                <br>
+                 <br>
+                  <br>
+                   <br>
+                    <br>
+                     <br>
+                     <br>
+                     <br>
+                        
+                                   
+
+                    <div class="series-container"></div>     
+                    
+                    
+                    
+                    <br>
+                    <br>
+                     <br>
+                     <br>
+                     <br>
+                     <br>
+                     <br>                     
+
+                     <br>
+                    <br>
+                     <br>
+                     <br>
+                     <br>
+                     <br>
+                     <br>                     
+
+                     <br>
+                    <br>
+                     <br>
+                     <br>
+                     <br>
+                     <br>
+                     <br>                     
+
+                    
+              
+
+<!-- Elemento de áudio para o buzzer -->
+    <audio id="buzzerSound" src="../assets/buzzer.mp3" preload="auto"></audio>
+    
+    <script src="../src/exibir.js"></script>
+      
+    
+
+    <div class="table-responsive">
+
+        
+        <table  id="datasTable" class="table-responsive  table-bordered datasTable  resultsTable text-dark" >           
+            <thead >    
+                <tr>
+                    <th scope="col">POSIÇÃO</th>
+                    <th scope="col">ROUND</th>       
+                    <th scope="col">PONTOS DA POSIÇÃO</th>
+                    <th scope="col">PONTOS DO ROUND</th>
+                </tr>  
+                <tr>
+                    
+                </tr>
+                
+            </thead>
+            <tbody>   
+
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>                                  
+                             
+            </tbody> 
+        </table>
+    </div>
+</body>
+
+</html>

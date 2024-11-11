@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro de Jogadores</title>
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+
+  <div class="container mt-5">
+    <h1 class="text-center mb-4">Cadastro de Jogadores</h1>
+
+    <!-- Formulário de Cadastro e Edição -->
+    <div class="card shadow p-4 mb-4">
+      <h3 class="card-title text-center" id="form-title">Insira os dados do jogador</h3>
+      <form id="playerForm" enctype="multipart/form-data">
+        <input type="hidden" id="playerId" name="id">
+        <div class="mb-3">
+          <label for="name" class="form-label">Nome:</label>
+          <input type="text" id="name" name="vc_name" class="form-control" placeholder="Nome do Jogador" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label">Email:</label>
+          <input type="email" id="email" name="vc_email" class="form-control" placeholder="Email" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="number" class="form-label">Número:</label>
+          <input type="number" id="number" name="it_numero" class="form-control" placeholder="Número do Jogador" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="photo" class="form-label">Foto de Fundo:</label>
+          <input type="file" id="photo" name="vc_foto" class="form-control" accept="image/*">
+        </div>
+        <div class="mb-3">
+          <label for="vc_profile" class="form-label">Foto de Perfil:</label>
+          <input type="file" id="vc_profile" name="vc_profile" class="form-control" accept="image/*">
+        </div>
+        <button type="submit" class="btn btn-primary w-100" id="form-submit-button">Cadastrar</button>
+      </form>
+    </div>
+
+    <!-- Tabela de Jogadores -->
+    <div class="card shadow p-4">
+      <h3 class="card-title text-center">Lista de Jogadores</h3>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Número</th>
+            <th>Foto</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="playerTableBody">
+          <!-- Jogadores serão carregados aqui via JavaScript -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('playerForm');
+    const playerIdInput = document.getElementById('playerId');
+    const playerTableBody = document.getElementById('playerTableBody');
+    const formTitle = document.getElementById('form-title');
+    const submitButton = document.getElementById('form-submit-button');
+
+    let editingPlayerId = null;
+
+    // Função para carregar os jogadores
+    async function loadPlayers() {
+      try {
+        const response = await fetch('http://127.0.0.1:8002/api/grupo1/jogadores');
+        const players = await response.json();
+
+        playerTableBody.innerHTML = '';
+        players.forEach(player => {
+    const playerRow = document.createElement('tr');
+      playerRow.innerHTML = `
+              <td>${player.vc_name}</td>
+              <td>${player.vc_email}</td>
+              <td>${player.it_numero}</td>
+              <td><img src="${player.vc_foto}" alt="Foto do jogador" width="50"></td>
+              <td><img src="${player.vc_profile}" alt="Foto de perfil do jogador" width="50"></td>
+              <td>
+                <button class="btn btn-sm btn-warning" onclick="editPlayer(${player.id})">Editar</button>
+                <button class="btn btn-sm btn-danger" onclick="deletePlayer(${player.id})">Excluir</button>
+              </td>
+          `;
+          playerTableBody.appendChild(playerRow);
+      });
+      } catch (error) {
+        console.error('Erro ao carregar jogadores:', error);
+      }
+    }
+
+    // Função para preencher o formulário para editar um jogador
+    async function editPlayer(id) {
+      try {
+        const response = await fetch(`http://127.0.0.1:8002/api/grupo1/jogadores/${id}`);
+        const player = await response.json();
+
+        playerIdInput.value = player.id;
+        document.getElementById('name').value = player.vc_name;
+        document.getElementById('email').value = player.vc_email;
+        document.getElementById('number').value = player.it_numero;
+        // Não preenche o campo de foto, o usuário deve selecionar uma nova imagem se quiser.
+
+        editingPlayerId = id;
+        formTitle.textContent = 'Editar Jogador';
+        submitButton.textContent = 'Salvar Alterações';
+      } catch (error) {
+        console.error('Erro ao carregar jogador:', error);
+      }
+    }
+
+ // Função para cadastrar ou editar jogador
+ form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      let method = 'POST';
+      let url = 'http://127.0.0.1:8002/api/grupo1/jogadores';
+
+      if (editingPlayerId) {
+        method = 'POST'; // Utilizando 'POST' com FormData para enviar multipart form, normalmente usaríamos PUT aqui.
+        url = `http://127.0.0.1:8002/api/grupo1/jogadores/${editingPlayerId}?_method=PUT`;
+      }
+
+      try {
+        const response = await fetch(url, {
+          method: method,
+          body: formData
+        });
+
+        if (!response.ok) {
+          throw new Error('Erro ao salvar jogador');
+        }
+
+        alert('Jogador salvo com sucesso!');
+        form.reset();
+        editingPlayerId = null;
+        formTitle.textContent = 'Insira os dados do jogador';
+        submitButton.textContent = 'Cadastrar';
+        loadPlayers();
+      } catch (error) {
+        console.error('Erro ao salvar jogador:', error);
+      }
+    });
+    // Função para excluir jogador
+    async function deletePlayer(id) {
+      if (!confirm('Tem certeza que deseja excluir este jogador?')) return;
+
+      try {
+        const response = await fetch(`http://127.0.0.1:8002/api/grupo1/jogadores/${id}`, {
+          method: 'DELETE'
+        });
+
+        if (!response.ok) {
+          throw new Error('Erro ao excluir jogador');
+        }
+
+        alert('Jogador excluído com sucesso');
+        loadPlayers();
+      } catch (error) {
+        console.error('Erro ao excluir jogador:', error);
+      }
+    }
+
+    // Carrega os jogadores ao iniciar
+    loadPlayers();
+  </script>
+</body>
+</html>

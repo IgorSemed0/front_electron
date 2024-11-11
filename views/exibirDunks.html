@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concurso de Dunks</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/dunk.css">
+    <style>
+        /* Estilos adaptados para o concurso de dunks */
+        .card {
+            backdrop-filter: blur(10px); /* Fundo transparente */
+            padding: 20px;
+            top: -175px;
+        }
+        .judge {
+            flex: 1;
+            margin: 10px;
+            min-width: 120px;
+            height: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .judge-score {
+            font-size: 2.5rem;
+            color: #5a3e1b;
+        }
+        .judge-name {
+            margin-top: 5px;
+            font-weight: normal;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+
+<body>
+     <header>
+        <h1>CONCURSO DE SMASH 
+            <!-- <img style="width: 85px; vertical-align: text-bottom; margin-left: -36px;" src="../assets/imgs/hand1.png" alt="Dunk"> -->
+        </h1>
+    </header>
+
+    <div class="container">
+        <main>
+            <!-- <div class="player-info">
+                <img src="../assets/imgs/player6.png" alt="Jogador" class="player-image2">
+                <h2 id="jogador" class="player-name">Nome do Jogador</h2>
+            </div> -->
+
+            <div id="" class="player-info">
+                <div id="jogadorFoto" class="player-photo">
+                    <img id="jogadorFoto" src="../assets/imgs/player6.png"
+                    alt="Lebron James" class="player-image2">
+                </div>               
+                <p id="jogador" class="player-name">Paulo</p>
+            </div> 
+
+            <div class="scoreboard">
+                <div class="card2">
+                    <h3>Pontuação Total</h3>
+                    <div class="score-container">
+                        <p id="score" class="score">00.0</p>
+                    </div>
+                </div>
+
+                <!-- Seção dos jurados -->
+                <div class="card bg-transparent border-0 text-center">
+                    <div class="card-header">
+                        <h3 class="m-0">JURADOS</h3>
+                    </div>                 
+
+                    <div class="mt-5">
+                        <div class="row" id="judges-container">
+                            <!-- Contêiner para os juízes -->
+                            <!-- <div id="judges-container" class="col-md-12 d-flex flex-wrap justify-content-around"> -->
+                                <!-- Exemplo de juízes -->
+                                <!-- <div id="judges-container" class="col-md-6 mb-4">
+                                    <div  class="p-3 border bg-light">Juiz 1</div>
+                                </div> -->
+                                
+                                <!-- Continue adicionando elementos conforme necessário -->
+                           
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <!-- Seção dos jurados -->
+           
+            
+
+            <!-- Ranking de acordo com os pontos registrados no round atual -->
+            <aside class="ranking" id="ranking">
+                <!-- O conteúdo será preenchido dinamicamente pela função loadPlayers -->
+            </aside>
+        </main>
+
+        <div class="series-container"></div>
+
+        <!-- Elemento de áudio para o buzzer -->
+        <audio id="buzzerSound" src="../assets/buzzer.mp3" preload="auto"></audio>
+
+        <script src="../src/dunks.js"></script>
+    </div>
+</body>
+
+</html>

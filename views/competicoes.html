@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerenciar Competições</title>
+  <!-- Bootstrap CSS (importado localmente) -->
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+
+  <div class="container mt-5">
+    <!-- Título da Página -->
+    <h1 class="text-center mb-4">Gerenciar Competições</h1>
+
+    <!-- Formulário de Competição -->
+    <div class="card shadow p-4 mb-5">
+      <h3 class="card-title text-center">Cadastrar Competição</h3>
+      <form id="competicaoForm">
+        <input type="hidden" id="competicaoId" />
+        
+        <div class="mb-3">
+          <label for="nome" class="form-label">Nome da Competição:</label>
+          <input type="text" id="nome" class="form-control" placeholder="Nome da Competição" required />
+        </div>
+
+        <div class="mb-3">
+          <label for="local" class="form-label">Local:</label>
+          <input type="text" id="local" class="form-control" placeholder="Local" required />
+        </div>
+
+        <div class="mb-3">
+          <label for="data" class="form-label">Data:</label>
+          <input type="date" id="data" class="form-control" required />
+        </div>
+
+        <button type="submit" id="saveCompeticaoBtn" class="btn btn-primary w-100">Salvar Competição</button>
+      </form>
+    </div>
+
+    <!-- Lista de Competições -->
+    <div class="card shadow p-4">
+      <h3 class="card-title text-center">Lista de Competições</h3>
+      <table id="competicoesTable" class="table table-striped">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Local</th>
+            <th>Data</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Linhas de competições irão aqui -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="../src/competicoes.js"></script>
+</body>
+</html>

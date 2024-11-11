@@ -1,0 +1,530 @@
+ @font-face {
+    font-family: 'nba-lakers';
+    src: url('../fonts/nba-lakers.eot'); /* IE9 Compat Mode */
+    src: url('../fonts/nba-lakers.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../fonts/nba-lakers.woff2') format('woff2'), /* Modern browsers */
+         url('../fonts/nba-lakers.woff') format('woff'), /* Older browsers */
+         url('../fonts/nba-lakers.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('../fonts/nba-lakers.svg#nba-lakers') format('svg'); /* Legacy iOS */
+    font-weight: normal;
+    font-style: normal;
+
+    font-family: 'nba-suns';
+    src: url('../fonts/nba-suns.eot'); /* IE9 Compat Mode */
+    src: url('../fonts/nba-suns.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../fonts/nba-suns.woff2') format('woff2'), /* Modern browsers */
+         url('../fonts/nba-suns.woff') format('woff'), /* Older browsers */
+         url('../fonts/nba-suns.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('../fonts/nba-suns.svg#nba-suns') format('svg'); /* Legacy iOS */
+    font-weight: normal;
+    font-style: normal;
+
+    font-family: 'real-madrid-19-20';
+    src: url('../fonts/real-madrid-19-20.eot'); /* IE9 Compat Mode */
+    src: url('../fonts/real-madrid-19-20.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../fonts/real-madrid-19-20.woff2') format('woff2'), /* Modern browsers */
+         url('../fonts/real-madrid-19-20.woff') format('woff'), /* Older browsers */
+         url('../fonts/real-madrid-19-20.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('../fonts/real-madrid-19-20.svg#real-madrid-19-20') format('svg'); /* Legacy iOS */
+    font-weight: normal;
+    font-style: normal;
+    
+
+}
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'real-madrid-19-20', sans-serif !important;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: white;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 20px;
+            background: url("../assets/bg.png");
+            background-repeat: no-repeat;
+        }
+
+        aside {
+            position: absolute;
+            right: 150px;
+            width: 300px;
+            top: 144px;
+        }
+        
+
+        header {
+            text-align: center;
+            background-color: #fdd835;
+            padding: 0px;
+            border-bottom: 5px solid #d4a017;
+        }
+
+        header h1 {
+            font-size: 5rem;
+            font-weight: 500;
+            color: #4e2606;
+        }
+
+        main {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .player-info {
+            position: relative; /* Necessário para o contexto do position: absolute */
+            width: 100%; /* Ajuste conforme necessário */
+            max-width: 400px; /* Limita o tamanho da imagem */
+            margin: 0 auto; /* Centraliza o div */
+        }
+        
+        .player-photo2 {
+            position: relative;
+            display: inline-block;
+            width: 724px;
+            height: 1086px;
+            overflow: hidden;
+            left: -342px;
+            top: 44px;
+        }
+
+        .player-photo {
+            position: relative;
+            display: inline-block;
+            width: 724px;
+            height: 1086px;
+            overflow: hidden;
+            left: -342px;
+            top: 44px;
+        }
+        
+        /* Imagem */
+        .player-image2 {
+            width: 100%; /* Garante que a imagem ocupe todo o espaço disponível */
+            /* height: 100%;  */
+            object-fit: cover; /* Mantém a proporção da imagem */
+            border-radius: 10px;
+        }
+        
+        /* Estilo do texto sobreposto */
+        .player-name {
+            position: absolute;
+            top: 23%;
+            left: 92%;
+            transform: translate(-50%, -50%);
+            font-size: 5rem;
+            font-weight: 500;
+            color: #4e2606;
+            text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.7);
+            pointer-events: none;
+        }
+        
+
+        .scoreboard {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        /*
+
+        .card {
+            background-color: #ffc107;
+            text-align: center;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px 0;
+            width: 86%;
+            height: 379px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+        .card2 {
+            background-color: #ffc107;
+            text-align: center;
+            padding: 17px;
+            border-radius: 10px;
+            margin: 10px 0;
+            width: 86%;
+            height: 386px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            color: #4e2606;
+        }
+
+
+        .card h3 {
+            font-size: 2.2rem;
+            color: #4e2606;
+            font-weight: 500;
+        }
+
+        .score {
+            font-size: 13rem;
+            color: #4e2606;
+            font-weight: 500px;
+            background-color: #d4a017;
+            border-radius: 7px;
+        }
+        .time {
+            color: #4e2606;
+            font-weight: 500px;
+            background-color: #d4a017;
+            border-radius: 7px;
+            font-size: 8rem;
+        }
+            */
+
+            .scoreboard {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-around;
+            }
+            
+            /* Cards com tamanhos fixos */
+            .card2, .card {
+                background-color: #ffc107;
+                text-align: center;
+                padding: 12px;
+                border-radius: 10px;
+                margin: -137px 0;
+                width: 48%;
+                height: 358px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                color: #4e2606;
+            }
+            
+            /* Estilo para o título */
+            h3 {
+                font-size: 2.5rem;
+                margin-bottom: 10px;
+                color: #4e2606;
+            }
+            
+            /* Container do score e cronômetro */
+            .score-container {
+                background-color: #d4a017;
+                border-radius: 7px;
+                padding: 10px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: 100%;
+                overflow: hidden; /* Controla o transbordamento */
+            }
+            
+            /* Estilo do texto do score com aumento de tamanho */
+            .score {
+                font-size: 21rem;
+                color: #4e2606;
+                font-weight: 500;
+                margin: 0;
+                line-height: 1;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                margin-top: -35px;
+            }
+            
+            /* Estilo do cronômetro com aumento de tamanho */
+            .time {
+                font-size: 9rem; /* Aumenta o tamanho do texto */
+                color: #4e2606;
+                font-weight: 500;
+                margin: 0;
+                line-height: 1;
+                overflow: hidden; /* Previne o transbordamento */
+                text-overflow: ellipsis; /* Caso o texto ultrapasse, mostra reticências */
+            }
+            
+            /* Estilo do status */
+            .status-active {
+                font-size: 1.2rem;
+                color: rgba(0, 128, 0, 0);
+                margin-top: 20px;
+            }
+            
+
+        .ranking {
+            flex: 0.3;
+            /* display: flex; */
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .rank-item {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+
+        /* .rank-item img {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            margin-right: 3px;
+            margin-top: 53px;
+        } */
+
+        .rank-item img {
+            width: 53px;
+            /* height: 71px; */
+            border-radius: 50%;
+            margin-right: 3px;
+            margin-top: 14px;
+            margin-left: 8px;
+        }
+
+        .rank-item p {
+            display: flex;
+            width: 190px;
+            height: 42px;
+            font-size: 18px;
+            font-weight: 500px;
+            background-color: #ffc107;
+            border-radius: 20px;
+            align-items: center;
+            justify-content: center;
+            color: #4e2606;
+            margin-top: 15px;
+        }
+
+       .rank-item span {
+    font-size: 1rem;
+    font-weight: normal;
+    margin-left: 5px;
+    color: rgb(78 38 6);
+    font-weight: 500;
+}
+
+        .sub-text {
+    font-size: 0.7em; /* Diminui o tamanho do texto */
+    vertical-align: baseline; /* Mantém alinhado com o número */
+}
+
+
+
+.pontos-wrapper {
+    display: inline-block; /* Mantém os pontos e "pts" juntos em uma linha */
+}
+
+
+.player-image-wrapper2 {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #fdd835; /* Cor de borda estilizada */
+   /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  */
+    box-shadow:  0 4px 8px rgb(0 0 0 / 59%);;
+    margin-right: 10px; /* Espaçamento entre a imagem e o texto */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.player-image-wrapper {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #fdd835;
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+    box-shadow: 0 4px 8px rgb(0 0 0 / 59%);
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* .player-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+} */
+
+
+
+/* .player-image2 {
+    width: 100%;   
+    object-fit: cover;
+} */
+/* 
+.circle {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: gray;
+      margin: 5px;
+    }
+    .highlighted {
+      background-color: #fdd835;
+    }
+    .series-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .series {
+      display: flex;
+      justify-content: center;
+      margin-right: 30px;
+    }
+
+    .circle {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: lightgray;
+        text-align: center;
+        line-height: 50px;
+        margin: 10px;
+    }
+    
+    .circle.scored {
+        background-color: green !important;
+    }
+    
+    .circle.no-score {
+        background-color: #330505 !important;
+    }
+
+    .series-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+    
+    .series {
+        display: flex;
+        justify-content: center;
+        margin-right: 30px; 
+    }
+    
+    .circle {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: lightgray;
+        text-align: center;
+        line-height: 50px;
+        margin: 0 5px; 
+    } */
+
+    .circle {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: lightgray;
+        text-align: center;
+        line-height: 50px;
+        margin: 0 5px; /* Espaço entre as bolas */
+        background-image: url('../imgs/ball6.png');
+        background-size: cover;
+        background-position: center;
+    }
+    
+    .circle.scored-brown {
+        background-image: url('../imgs/ball6.png');
+        border: 2px solid #6b554e;
+    }
+    
+    .circle.scored-green {
+        background-image: url('../imgs/green2.png');
+        border: 2px solid #6b554e;
+    }
+    
+    .circle.scored-white {
+        background-image: url('../imgs/white2.png');
+        border: 2px solid #6b554e;
+    }
+    
+    .circle.no-score {
+        opacity: 15.5;
+        border: 2px solid #4e2606;
+        background: #2f1805;
+    }
+    
+    .series-container {
+        position: fixed;
+        top: 92%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+    }
+    
+    .series2 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: #d4a01785;
+        border-radius: 9px;
+    }
+
+    .series {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 9px;
+        background: #d4a01785;
+        padding: 0px;
+        margin: -2px;
+        transition: background 0.3s ease;
+    }
+      
+      /* Posições com min-width de 340px */
+      .series[data-position='Canto esquerdo'],
+      .series[data-position='Ala esquerda'],
+      .series[data-position='Topo do arco'],
+      .series[data-position='Ala direita'],
+      .series[data-position='Canto direito'] {
+        background: rgba(212, 160, 23, 0.85); /* Mesma cor atual */
+        min-width: 340px;
+      }
+      
+      /* Posições com min-width de 60px */
+      .series[data-position='Special 2 points'],
+      .series[data-position='Special 3 points'] {
+        background: rgba(212, 160, 23, 0.6); /* Versão mais clara da cor */
+        min-width: 60px;
+      }
+      
+    
+    .series-header {
+        font-size: 18px;
+        font-weight: 500;
+        margin-bottom: 10px;
+        text-align: center;
+        color: #4e2606;
+    }
+    
+    .series-balls {
+        display: flex;
+        gap: 10px; /* Espaço entre as bolas */
+    }
+    
+    
+    
+    
+

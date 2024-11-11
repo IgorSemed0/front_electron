@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Basketball Contest
+Comment=Aplicativo de competição de basquete
+Exec=/opt/Basketball Contest/Basketball Contest
+Icon=basketball_contest
+Terminal=false
+Type=Application
+Categories=Utility;Sports;

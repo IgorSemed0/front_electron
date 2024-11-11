@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro de Jurados</title>
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+  <div class="container mt-5">
+    <h1 class="text-center mb-4">Cadastro de Jurados</h1>
+    <div class="card shadow p-4">
+      <h3 class="card-title text-center">Insira os dados do Jurado</h3>
+      <h2>Máximo de Jurados: 4</h2>
+      <form id="juradoForm" enctype="multipart/form-data">
+        <div class="mb-3">
+          <label for="name" class="form-label">Nome:</label>
+          <input type="text" id="name" name="vc_nome" class="form-control" placeholder="Nome do Jurado" required>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Cadastrar</button>
+      </form>
+    </div>
+
+    <!-- Lista de jurados cadastrados -->
+    <div class="mt-5">
+      <h3 class="text-center">Jurados Cadastrados</h3>
+      <ul id="juradoList" class="list-group"></ul>
+    </div>
+  </div>
+
+  <!-- Modal para atualização de jurado -->
+  <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="updateModalLabel">Atualizar Jurado</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="updateForm">
+            <div class="mb-3">
+              <label for="updateName" class="form-label">Nome:</label>
+              <input type="text" id="updateName" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Atualizar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('juradoForm');
+    const juradoList = document.getElementById('juradoList');
+    let juradoIdToUpdate = null; // Para armazenar o ID do jurado que será atualizado
+
+    // Função para exibir os jurados cadastrados
+    async function fetchJurados() {
+      try {
+        const response = await fetch('http://127.0.0.1:8002/api/grupo1/jurados');
+        const jurados = await response.json();
+
+        juradoList.innerHTML = ''; // Limpa a lista
+        jurados.forEach(jurado => {
+          const li = document.createElement('li');
+          li.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center');
+          li.innerHTML = `
+            ${jurado.vc_nome}
+            <div>
+              <button class="btn btn-sm btn-warning" onclick="editJurado(${jurado.id}, '${jurado.vc_nome}')">Update</button>
+              <button class="btn btn-sm btn-danger" onclick="deleteJurado(${jurado.id})">Delete</button>
+            </div>
+          `;
+          juradoList.appendChild(li);
+        });
+      } catch (error) {
+        console.error('Erro ao buscar jurados:', error);
+      }
+    }
+
+    // Função para deletar um jurado
+    async function deleteJurado(id) {
+      try {
+        const response = await fetch(`http://127.0.0.1:8002/api/grupo1/jurados/${id}`, {
+          method: 'DELETE'
+        });
+
+        if (!response.ok) {
+          throw new Error('Erro ao deletar jurado');
+        }
+
+        alert('Jurado deletado com sucesso!');
+        fetchJurados(); // Atualiza a lista
+      } catch (error) {
+        alert(`Erro: ${error.message}`);
+      }
+    }
+
+    // Função para abrir o modal de atualização com os dados do jurado
+    function editJurado(id, name) {
+      juradoIdToUpdate = id;
+      document.getElementById('updateName').value = name;
+      new bootstrap.Modal(document.getElementById('updateModal')).show();
+    }
+
+    // Função para atualizar o jurado
+    document.getElementById('updateForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const updatedName = document.getElementById('updateName').value;
+
+      try {
+        const response = await fetch(`http://127.0.0.1:8002/api/grupo1/jurados/${juradoIdToUpdate}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ vc_nome: updatedName })
+        });
+
+        if (!response.ok) {
+          throw new Error('Erro ao atualizar jurado');
+        }
+
+        alert('Jurado atualizado com sucesso!');
+        fetchJurados(); // Atualiza a lista
+        bootstrap.Modal.getInstance(document.getElementById('updateModal')).hide(); // Fecha o modal
+      } catch (error) {
+        alert(`Erro: ${error.message}`);
+      }
+    });
+
+    // Chamar a função ao carregar a página
+    document.addEventListener('DOMContentLoaded', fetchJurados);
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const formData = new FormData(form);
+
+        try {
+            const response = await fetch('http://127.0.0.1:8002/api/grupo1/jurados', {
+            method: 'POST',
+            body: formData
+            });
+
+            if (!response.ok) {
+            throw new Error('Erro ao cadastrar jurado');
+            }
+
+            alert('Jurado cadastrado com sucesso!');
+            
+            // Reseta o formulário e reativa os campos
+            form.reset();
+            document.querySelector('button[type="submit"]').disabled = false;
+            document.querySelector('input[type="text"]').disabled = false;
+
+            fetchJurados(); // Atualizar a lista de jurados
+
+        } catch (error) {
+            alert(`Erro: ${error.message}`);
+        }
+    });
+
+  </script>
+  <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

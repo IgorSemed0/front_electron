@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciar Challenges</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        .form-container {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+        }
+        .table-container {
+            margin-top: 20px;
+        }
+        .action-buttons .btn {
+            margin-right: 5px; /* Espaçamento entre os botões de ação */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center my-4">Gerenciar Challenges</h1>
+
+        <div class="form-container">
+            <form id="challengeForm">
+                <input type="hidden" id="challengeId" />
+                
+                <div class="mb-3">
+                    <label for="idCompeticao" class="form-label">Competição:</label>
+                    <select id="idCompeticao" class="form-select" required>
+                        <option value="">Selecione uma Competição</option>
+                        <!-- As opções serão preenchidas dinamicamente pelo JavaScript -->
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="idJogador" class="form-label">Jogadores:</label>
+                    <select id="idJogador" class="form-select" multiple required>
+                        <option value="">Selecione um ou mais Jogadores</option>
+                        <!-- As opções serão preenchidas dinamicamente pelo JavaScript -->
+                    </select>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <button type="submit" id="saveChallengeBtn" class="btn btn-primary">Salvar Challenge</button>
+                    <button type="button" id="cancelBtn" class="btn btn-secondary">Cancelar</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="table-container">
+            <h2>Lista de Challenges</h2>
+            <table id="challengesTable" class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>JOGADOR</th>
+                        <th>COMPETIÇÃO</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Challenge 1</td>
+                        <td>Tipo 1</td>
+                        <td class="action-buttons">
+                            <button class="btn btn-warning btn-sm">Editar</button>
+                            <button class="btn btn-danger btn-sm">Excluir</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Challenge 2</td>
+                        <td>Tipo 2</td>
+                        <td class="action-buttons">
+                            <button class="btn btn-warning btn-sm">Editar</button>
+                            <button class="btn btn-danger btn-sm">Excluir</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="../src/challenges.js"></script>
+</body>
+</html>

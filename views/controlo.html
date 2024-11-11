@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Controle de Competição de 3 Pontos</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+  <div class="container mt-5">
+    <h1 class="text-center mb-4">Controle de Competição de 3 Pontos</h1>
+
+    <!-- Seletor de Challkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkaenge -->
+    <div class="form-group">
+      <label for="challengeSelect">Selecione o Jogador:</label>
+      <select id="challengeSelect" class="form-control">
+        <!-- Opções serão preenchidas dinamicamente -->
+      </select>
+    </div>
+
+    <!-- Seletor de Round -->
+    <div class="form-group mt-3">
+      <label for="roundSelect">Selecione o Round:</label>
+      <select id="roundSelect" class="form-control">
+        <!-- Opções serão preenchidas dinamicamente -->
+      </select>
+    </div>
+
+    <!-- Seletor de Posição -->
+    <div class="form-group mt-3">
+      <label for="posicaoSelect">Selecione a Posição:</label>
+      <select id="posicaoSelect" class="form-control">
+        <!-- Opções serão preenchidas dinamicamente -->
+      </select>
+    </div>
+    <div class="cform-group mt-3">      
+      <form id="pointForm">
+        <input type="hidden" id="posicaoId" /> 
+        <div class="mb-3">
+          <label for="tm_tempo" class="form-label">Tempo:</label>
+          <input type="text" id="tm_tempo" class="form-control" placeholder="Tempo" required />
+        </div>      
+        <!-- <button type="submit" id="savePosicaoBtn" class="btn btn-primary w-100">Salvar Posicao</button> -->
+      </form>
+    </div>
+    <!-- Controles para 3 Pontos -->
+    <div id="controle3Pontos" class="row mt-4">
+      <div class="col-12 mb-3">
+        <button id="basketBtnZero" class="btn btn-primary w-100">0 Ponto</button>
+      </div>
+    </div>
+    <div id="controle3Pontos" class="row mt-4">
+      <div class="col-12 mb-3">
+        <button id="basketBtn" class="btn btn-primary w-100">1 Ponto</button>
+      </div>
+    </div>
+    <div id="controle3Pontos" class="row mt-4">
+      <div class="col-12 mb-3">
+        <button id="basketBtn2" class="btn btn-primary w-100">2 Pontos</button>
+      </div>
+    </div>
+    <div id="controle3Pontos" class="row mt-4">
+      <div class="col-12 mb-3">
+        <button id="basketBtn3" class="btn btn-primary w-100">3 Pontos</button>
+      </div>
+    </div>
+    
+
+    <!-- Controles de Timer -->
+    <div class="row text-center mt-4">
+      <div class="col-12 col-md-4 mb-3">
+        <button id="startTimerBtn" class="btn btn-success w-100">Iniciar Timer</button>
+      </div>
+      <div class="col-12 col-md-4 mb-3">
+        <button id="pauseTimerBtn" class="btn btn-warning w-100">Pausar Timer</button>
+      </div>
+      <div class="col-12 col-md-4 mb-3">
+        <button id="resetTimerBtn" class="btn btn-danger w-100">Reiniciar Timer</button>
+      </div>
+    </div>
+    
+    <div class="card shadow p-4">
+      <h3 class="card-title text-center">Lista de Pontos</h3>
+      <table id="pointsTable" class="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>JOGADOR</th>
+            <th>ROUND</th>
+            <th>POSIÇÃO</th>
+            <th>PONTO</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Linhas de Pontos irão aqui -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="../src/controlo.js"></script>
+</body>
+</html>

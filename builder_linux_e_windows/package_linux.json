@@ -1,0 +1,49 @@
+{
+  "name": "basketball_contest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "electron-packager . basketball_contest --platform=linux --arch=x64 --out=dist --overwrite",
+    "start": "electron ."
+  },
+  "build": {
+    "appId": "com.seuapp.meuapp",
+    "productName": "Basketball Contest",
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "category": "sport",
+      "icon": "assets/ball.png"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PauloTumba/basketball_contest.git"
+  },
+  "keywords": [],
+  "author": {
+  "name": "Seu Nome",
+  "email": "manuelpaulotumba@gmail.com",
+  "url": "https://github.com/PauloTumba"
+},
+
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PauloTumba/basketball_contest/issues"
+  },
+  "homepage": "https://github.com/PauloTumba/basketball_contest#readme",
+  "dependencies": {
+    "axios": "^1.7.7",
+    "bootstrap": "^5.3.3",
+    "electron-builder": "^25.1.8",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "electron": "^32.1.2",
+    "electron-packager": "^17.1.2"
+  }
+}

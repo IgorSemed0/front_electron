@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Main Window</title>
+  <!-- Bootstrap CSS (importado localmente) -->
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <!-- FontAwesome for icons -->
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> -->
+  <link rel="stylesheet" href="assets/css/all.min.css">
+</head>
+
+
+</head>
+<body class="bg-light">
+
+  <!-- Barra de Navegação -->
+  <!-- <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container">
+      <a class="navbar-brand" href="#">Sistema de Competição</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </nav> -->
+
+  <div class="container mt-5">
+    <!-- Título centralizado -->
+    <h1 class="text-center mb-4">Bem-vindo ao Sistema de Competição</h1>
+
+    <!-- Lista de links como botões com ícones e cards -->
+    <div class="row">
+      <div class="col-md-6 mb-4">
+        <div class="card shadow-sm">
+          <div class="card-body text-center">
+            <i class="fas fa-gamepad fa-3x mb-3 text-primary"></i>
+            <a href="#" id="controloBtn" class="btn btn-primary w-100">Controle de Trípulos</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 mb-4">
+        <div class="card shadow-sm">
+          <div class="card-body text-center">
+            <i class="fas fa-tv fa-3x mb-3 text-primary"></i>
+            <a href="#" id="exibirBtn" class="btn btn-primary w-100">Exibição de Trípulos</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 mb-4">
+        <div class="card shadow-sm">
+          <div class="card-body text-center">
+            <i class="fas fa-gamepad fa-3x mb-3 text-danger"></i>
+            <a href="#" id="openControloDunks" class="btn btn-danger w-100">Controle Dunks</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 mb-4">
+        <div class="card shadow-sm">
+          <div class="card-body text-center">
+            <i class="fas fa-tv fa-3x mb-3 text-danger"></i>
+            <a href="#" id="openExibirDunks" class="btn btn-danger w-100">Exibir de Dunks</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 mb-4">
+        <div class="card shadow-sm">
+          <div class="card-body text-center">
+            <i class="fas fa-user-plus fa-3x mb-3 text-warning"></i>
+            <a href="#" id="openCadastroJogador" class="btn btn-warning w-100">Cadastro de Jogadores</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 mb-4">
+        <div class="card shadow-sm">
+          <div class="card-body text-center">
+            <i class="fas fa-trophy fa-3x mb-3 text-info"></i>
+            <a href="#" id="openChallenges" class="btn btn-info w-100">Gerenciar Challenges</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 mb-4">
+        <div class="card shadow-sm">
+          <div class="card-body text-center">
+            <i class="fas fa-trophy fa-3x bg -warning mb-3 text-warning"></i>
+            <a href="#" id="openRounds" class="btn btn-warning w-100">Gerenciar Rounds</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 mb-4">
+        <div class="card shadow-sm">
+          <div class="card-body text-center">
+            <i class="fas fa-trophy fa-3x mb-3 text-info"></i>
+            <a href="#" id="openPosicoes" class="btn btn-info w-100">Gerenciar Posiçoes</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 mb-4">
+        <div class="card shadow-sm">
+          <div class="card-body text-center">
+            <i class="fas fa-user-plus fa-3x mb-3 text-success"></i>
+            <a href="#" id="openCadastroJurado" class="btn btn-success w-100">Cadastro de Jurados</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 mb-4">
+        <div class="card shadow-sm">
+          <div class="card-body text-center">
+            <i class="fas fa-trophy fa-3x mb-3 text-success"></i>
+            <a href="#" id="openCompeticoes" class="btn btn-success w-100">Gerenciar Competições</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="col-md-12 mb-4"></div>
+        <div class="card shadow-sm">
+          <div class="card-body text-center">
+            <i class="fas fa-clipboard-list fa-3x mb-3 text-danger"></i>
+            <a href="#" id="openPosicoes" class="btn btn-danger w-100">Gerenciar Posicoes</a>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </div>
+
+  <!-- Bootstrap JS (importado localmente) -->
+  <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    const { ipcRenderer } = require("electron");
+
+    document.getElementById("controloBtn").addEventListener("click", () => {
+      ipcRenderer.send("open-window", "controlo.html");
+    });
+
+    document.getElementById("exibirBtn").addEventListener("click", () => {
+      ipcRenderer.send("open-window", "exibir.html");
+    });
+
+    document.getElementById("openCadastroJogador").addEventListener("click", () => {
+      ipcRenderer.send("open-window", "cadastroJogadores.html");
+    });
+
+    document.getElementById("openChallenges").addEventListener("click", () => {
+      ipcRenderer.send("open-window", "challenges.html");
+    });
+
+    document.getElementById("openCompeticoes").addEventListener("click", () => {
+      ipcRenderer.send("open-window", "competicoes.html");
+    });
+    document.getElementById("openRounds").addEventListener("click", () => {
+      ipcRenderer.send("open-window", "rounds.html");
+    });
+    document.getElementById("openPosicoes").addEventListener("click", () => {
+      ipcRenderer.send("open-window", "posicoes.html");
+    });
+    document.getElementById("openExibirDunks").addEventListener("click", () => {
+      ipcRenderer.send("open-window", "exibirDunks.html");
+    });
+    document.getElementById("openControloDunks").addEventListener("click", () => {
+      ipcRenderer.send("open-window", "controloDunks.html");
+    });
+    document.getElementById("openCadastroJurado").addEventListener("click", () => {
+      ipcRenderer.send("open-window", "jurados.html");
+    });
+  </script>
+</body>
+</html>
